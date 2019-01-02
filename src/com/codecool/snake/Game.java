@@ -7,6 +7,7 @@ import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 
@@ -27,6 +28,8 @@ public class Game extends Pane {
         spawnSnake();
         spawnEnemies(4);
         spawnPowerUps(4);
+        spawnRestart();
+
 
         GameLoop gameLoop = new GameLoop(snake);
         Globals.getInstance().setGameLoop(gameLoop);
@@ -37,6 +40,15 @@ public class Game extends Pane {
     public void start() {
         setupInputHandling();
         Globals.getInstance().startGame();
+    }
+
+    private void spawnRestart() {
+        Button btn = new Button("Restart");
+        Globals.getInstance().display.addButton(btn);
+        btn.setOnAction((event -> {
+            System.out.printf("Restart is clicked%n");
+        }));
+
     }
 
     private void spawnSnake() {
