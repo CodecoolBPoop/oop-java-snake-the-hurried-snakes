@@ -36,6 +36,12 @@ public class Globals {
         resources.addImage("PowerUpHeart", new Image("powerup_heart.png"));
     }
 
+    public static void newTimer(String powerUp){
+        GameTimer powerUpTimer = new GameTimer();
+        powerUpTimer.setup(powerUp);
+        powerUpTimer.play();
+    }
+
     public Image getImage(String name) { return resources.getImage(name); }
 
     public void startGame() { gameLoop.start(); }

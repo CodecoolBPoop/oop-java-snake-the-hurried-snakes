@@ -23,10 +23,12 @@ public class SpeedBoost extends GameEntity implements Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
-            new SpeedBoost();
+            Globals.newTimer("SpeedBoost");
             destroy();
         }
     }
+
+
 
     public float getNewSpeed() {
         return newSpeed;

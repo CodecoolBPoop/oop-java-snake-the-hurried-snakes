@@ -23,7 +23,7 @@ public class Heart extends GameEntity implements Interactable {
     public void apply(GameEntity entity) {
         if(entity instanceof SnakeHead){
             System.out.println(getMessage());
-            new Heart();
+            Globals.newTimer("Heart");
             destroy();
         }
     }
