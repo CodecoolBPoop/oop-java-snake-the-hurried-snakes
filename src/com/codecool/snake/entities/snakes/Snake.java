@@ -78,4 +78,16 @@ public class Snake implements Animatable {
         if(result != null) return result;
         return head;
     }
+
+    public SnakeHead getHead() {
+        return head;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public static float getSpeed() {
+        return speed;
+    }
 }
