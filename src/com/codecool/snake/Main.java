@@ -1,9 +1,12 @@
 package com.codecool.snake;
 
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class Main extends Application {
 
@@ -34,6 +37,12 @@ public class Main extends Application {
         Globals.getInstance().display.addButton(btn);
         btn.setOnAction((event -> {
             Globals.getInstance().stopGame();
+            List<Timeline> timers = GameTimer.getTimers();
+
+            for (Timeline timer : timers) {
+                timer.stop();
+            }
+
             start(primaryStage);
         }));
 
