@@ -1,5 +1,7 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.enemies.CirclingEnemy;
+import com.codecool.snake.entities.enemies.RandomMovingEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.powerups.Berry;
 import com.codecool.snake.entities.powerups.Heart;
@@ -9,9 +11,9 @@ import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
+
+import java.awt.*;
 
 
 public class Game extends Pane {
@@ -28,7 +30,9 @@ public class Game extends Pane {
 
     public void init() {
         spawnSnake();
-        spawnEnemies(4);
+        spawnSimpleEnemies(3);
+        spawnCirclingEnemies(2);
+        spawnRandomMovingEnemies(2);
         spawnPowerUps(4);
 
         GameLoop gameLoop = new GameLoop(snake);
@@ -48,8 +52,16 @@ public class Game extends Pane {
         snake = new Snake(new Vec2d(500, 500));
     }
 
-    private void spawnEnemies(int numberOfEnemies) {
+    private void spawnSimpleEnemies(int numberOfEnemies) {
         for(int i = 0; i < numberOfEnemies; ++i) new SimpleEnemy();
+    }
+
+    private void spawnCirclingEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new CirclingEnemy();
+    }
+
+    private void spawnRandomMovingEnemies(int numberOfEnemies) {
+        for(int i = 0; i < numberOfEnemies; ++i) new RandomMovingEnemy();
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {

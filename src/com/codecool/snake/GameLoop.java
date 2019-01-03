@@ -3,6 +3,8 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.CirclingEnemy;
+import com.codecool.snake.entities.enemies.RandomMovingEnemy;
 import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.snakes.Snake;
 
@@ -42,6 +44,8 @@ public class GameLoop {
         double stepDuration = Globals.getInstance().game.getGameTimer().getFrameTime();
         if (Math.ceil(stepNumber * stepDuration) % (secondsBetweenTwoSpawning + 1) == 0) {
             new SimpleEnemy();
+            new CirclingEnemy();
+            new RandomMovingEnemy();
             stepNumber = 0;
         }
     }

@@ -1,43 +1,14 @@
 package com.codecool.snake.entities.enemies;
 
-import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
-import com.codecool.snake.entities.powerups.Laser;
-import com.codecool.snake.entities.snakes.SnakeHead;
-
 
 
 public class SimpleEnemy extends Enemy implements Animatable, Interactable {
 
     public SimpleEnemy() {
-        super(10, 1);
+        super(10, 1, 0);
         setImage(Globals.getInstance().getImage("SimpleEnemy"));
-    }
-
-    @Override
-    public void step() {
-        if (isOutOfBounds()) {
-            destroy();
-        }
-        setX(getX() + getHeading().getX());
-        setY(getY() + getHeading().getY());
-    }
-
-    @Override
-    public void apply(GameEntity entity) {
-        if(entity instanceof SnakeHead){
-            System.out.println(getMessage());
-            destroy();
-        }
-        if (entity instanceof Laser) {
-            destroy();
-        }
-    }
-
-    @Override
-    public String getMessage() {
-        return (getDamage() + " damage");
     }
 }
