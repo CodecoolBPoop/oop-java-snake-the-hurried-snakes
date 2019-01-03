@@ -8,6 +8,7 @@ import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.powerups.Berry;
 
 import com.codecool.snake.entities.powerups.Heart;
+import com.codecool.snake.entities.powerups.Laser;
 import com.codecool.snake.entities.powerups.SpeedBoost;
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
@@ -38,6 +39,9 @@ public class SnakeHead extends GameEntity implements Interactable {
         Point2D heading = Utils.directionToVector(headRotation, speed);
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
+        if (turnDirection.equals(SnakeControl.SHOOT)) {
+            new Laser(getPosition(), heading);
+        }
     }
 
     @Override
