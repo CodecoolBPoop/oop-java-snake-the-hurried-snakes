@@ -58,6 +58,7 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+        Globals.getInstance().game.getHealthBar().writeHealth(health);
         System.out.printf("Health: %s%n", health);
     }
 
