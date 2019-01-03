@@ -63,19 +63,18 @@ public class Display {
             popupwindow.setTitle("Game over!");
 
             Label label1 = new Label("Game over!");
-            label1.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.REGULAR, 30));
+            label1.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.REGULAR, 33));
 
-            Label scoreLabel = new Label("Your score is: " + 10);
-            scoreLabel.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.ITALIC, 20));
+            int score = Globals.getInstance().game.getSnake().getSnakeLength();
 
+            Label scoreLabel = new Label("Your score is: " + score);
+            scoreLabel.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.ITALIC, 22));
 
             Button button = new Button("Close this pop up window");
             //button.setOnAction(e -> popupwindow.close());
 
-            VBox layout = new VBox(10);
-
+            VBox layout = new VBox(20);
             layout.getChildren().addAll(label1, scoreLabel);
-
             layout.setAlignment(Pos.CENTER);
 
             Scene scene1 = new Scene(layout, 300, 200);
