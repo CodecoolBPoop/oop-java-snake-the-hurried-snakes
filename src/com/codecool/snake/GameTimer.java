@@ -1,5 +1,8 @@
 package com.codecool.snake;
 
+import com.codecool.snake.entities.powerups.Heart;
+import com.codecool.snake.entities.powerups.SpeedBoost;
+import com.codecool.snake.entities.snakes.Snake;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -29,8 +32,49 @@ public class GameTimer {
         timer.getKeyFrames().add( kf );
     }
 
+    public void setup(String powerUp){
+        timer.setCycleCount( Timeline.INDEFINITE );
+        if (powerUp.equals("Heart")){
+
+            KeyFrame powerUpMaker = new KeyFrame(
+                    Duration.seconds(frameTime*300),
+                    ae -> new Heart());
+
+            KeyFrame stopper = new KeyFrame(
+                    Duration.seconds(frameTime*310),
+                    ae -> stop());
+
+            timer.getKeyFrames().add( powerUpMaker );
+            timer.getKeyFrames().add( stopper );
+
+        } else if (powerUp.equals("SpeedBoost")){
+
+            KeyFrame powerUpMaker = new KeyFrame(
+                    Duration.seconds(frameTime*500),
+                    ae -> new SpeedBoost());
+
+            KeyFrame powerUpEnder = new KeyFrame(
+                    Duration.seconds(frameTime*300),
+                    ae -> Snake.setSpeed(2));
+
+            KeyFrame stopper = new KeyFrame(
+                    Duration.seconds(frameTime*510),
+                    ae -> stop());
+
+            timer.getKeyFrames().add( powerUpMaker );
+            timer.getKeyFrames().add( powerUpEnder );
+            timer.getKeyFrames().add( stopper );
+        }
+
+    }
+
     public void play() {
         timer.play();
         System.out.println("GameTimer playing.");
+    }
+
+    public void stop(){
+        System.out.println("GameTimer stopping.");
+        timer.stop();
     }
 }
