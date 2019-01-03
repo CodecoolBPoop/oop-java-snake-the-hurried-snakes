@@ -5,6 +5,7 @@ import java.awt.*;
 import java.util.List;
 
 import com.codecool.snake.entities.snakes.Snake;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.*;
 
@@ -27,6 +28,10 @@ public class Display {
     public void add(GameEntity entity) {
         displayPane.getChildren().add(entity);
         gameObjects.add(entity);
+    }
+
+    public void addButton(Button button) {
+        displayPane.getChildren().add(button);
     }
 
     public void remove(GameEntity entity) {

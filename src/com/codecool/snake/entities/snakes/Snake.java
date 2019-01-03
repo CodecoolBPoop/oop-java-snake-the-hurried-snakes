@@ -12,7 +12,7 @@ import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
-    private static final float speed = 2;
+    private static float speed = 2;
     private int health = 100;
     private int snakeLength = 0;
 
@@ -58,11 +58,17 @@ public class Snake implements Animatable {
 
     public void changeHealth(int diff) {
         health += diff;
+        System.out.printf("Health: %s%n", health);
+    }
+
+    public static void setSpeed(float newSpeed){
+        speed = newSpeed;
+        System.out.println(speed);
     }
 
     private void checkForGameOverConditions() {
         if (head.isOutOfBounds() || health <= 0) {
-            System.out.println("Game Over");
+            System.out.printf("Game Over. Health: %s%n", health);
             Globals.getInstance().stopGame();
             Display display = Globals.getInstance().display;
             Display.GameOverPopup popup = display.new GameOverPopup();
@@ -87,5 +93,17 @@ public class Snake implements Animatable {
 
     public int getSnakeLength() {
         return snakeLength;
+    }
+
+    public SnakeHead getHead() {
+        return head;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public static float getSpeed() {
+        return speed;
     }
 }

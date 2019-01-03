@@ -3,6 +3,7 @@ package com.codecool.snake;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.SimpleEnemy;
 import com.codecool.snake.entities.snakes.Snake;
 
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
 public class GameLoop {
     private Snake snake;
     private boolean running = false;
+    private long stepNumber = 0;
 
     public GameLoop(Snake snake) { this.snake = snake; }
 
@@ -29,10 +31,19 @@ public class GameLoop {
                     ((Animatable) gameObject).step();
                 }
             }
+            stepNumber++;
+            spawnNewEnemy(3);
             checkCollisions();
         }
-
         Globals.getInstance().display.frameFinished();
+    }
+
+    private void spawnNewEnemy(int secondsBetweenTwoSpawning) {
+        double stepDuration = Globals.getInstance().game.getGameTimer().getFrameTime();
+        if (Math.ceil(stepNumber * stepDuration) % (secondsBetweenTwoSpawning + 1) == 0) {
+            new SimpleEnemy();
+            stepNumber = 0;
+        }
     }
 
     private void checkCollisions() {
