@@ -9,9 +9,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.*;
 
 import javafx.geometry.Pos;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.stage.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.ButtonBase;
+import javafx.scene.control.Label;
 
 public class Display {
     private Pane displayPane;
@@ -59,18 +62,23 @@ public class Display {
             popupwindow.initModality(Modality.APPLICATION_MODAL);
             popupwindow.setTitle("Game over!");
 
-            Label label = new Label("Game over!");
+            Label label1 = new Label("Game over!");
+            label1.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.REGULAR, 30));
+
+            Label scoreLabel = new Label("Your score is: " + 10);
+            scoreLabel.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.ITALIC, 20));
+
 
             Button button = new Button("Close this pop up window");
             //button.setOnAction(e -> popupwindow.close());
 
             VBox layout = new VBox(10);
 
-            //layout.getChildren().addAll(label, button);
+            layout.getChildren().addAll(label1, scoreLabel);
 
             layout.setAlignment(Pos.CENTER);
 
-            Scene scene1 = new Scene(layout, 300, 250);
+            Scene scene1 = new Scene(layout, 300, 200);
             popupwindow.setScene(scene1);
             popupwindow.show();
 
