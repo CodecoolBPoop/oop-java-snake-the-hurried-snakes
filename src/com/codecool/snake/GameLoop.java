@@ -39,7 +39,7 @@ public class GameLoop {
     }
 
     private void spawnNewEnemy(int secondsBetweenTwoSpawning) {
-        double stepDuration = Globals.getInstance().game.getGameTimer().getframeTime();
+        double stepDuration = Globals.getInstance().game.getGameTimer().getFrameTime();
         if (Math.ceil(stepNumber * stepDuration) % (secondsBetweenTwoSpawning + 1) == 0) {
             new SimpleEnemy();
             stepNumber = 0;

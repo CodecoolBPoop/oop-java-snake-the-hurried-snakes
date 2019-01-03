@@ -27,6 +27,7 @@ public class GameTimer {
 
     GameTimer(double frameTime) {
         this.frameTime = frameTime;
+        timers.add(timer);
         System.out.println("GameTimer created with frame time: " + frameTime);
     }
 
@@ -78,16 +79,16 @@ public class GameTimer {
 
     public void play() {
         timer.play();
-        timers.add(timer);
         System.out.println("GameTimer playing.");
     }
 
     public void stop(){
         System.out.println("GameTimer stopping.");
+        timers.remove(this.timer);
         timer.stop();
     }
 
-    public double getframeTime() {
+    public double getFrameTime() {
         return frameTime;
     }
 }
