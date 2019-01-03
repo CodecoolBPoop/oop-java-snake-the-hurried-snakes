@@ -1,8 +1,12 @@
 package com.codecool.snake;
 
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+
+import java.util.List;
 
 public class Main extends Application {
 
@@ -20,10 +24,27 @@ public class Main extends Application {
         primaryStage.show();
 
         game.start();
+        spawnRestart(primaryStage);
     }
 
     @Override
     public void stop() throws Exception {
-        System.out.println("Exiting..");
+        System.out.printf("Exiting...%n");
+    }
+
+    private void spawnRestart(Stage primaryStage) {
+        Button btn = new Button("Restart");
+        Globals.getInstance().display.addButton(btn);
+        btn.setOnAction((event -> {
+            Globals.getInstance().stopGame();
+            List<Timeline> timers = GameTimer.getTimers();
+
+            for (Timeline timer : timers) {
+                timer.stop();
+            }
+
+            start(primaryStage);
+        }));
+
     }
 }

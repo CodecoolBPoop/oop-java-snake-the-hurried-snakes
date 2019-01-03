@@ -1,13 +1,17 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.enemies.SimpleEnemy;
-import com.codecool.snake.entities.powerups.SimplePowerUp;
+import com.codecool.snake.entities.powerups.Berry;
+import com.codecool.snake.entities.powerups.Heart;
+import com.codecool.snake.entities.powerups.SpeedBoost;
 import com.codecool.snake.entities.snakes.Snake;
 import com.codecool.snake.eventhandler.InputHandler;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 
 
 public class Game extends Pane {
@@ -19,7 +23,6 @@ public class Game extends Pane {
         Globals.getInstance().game = this;
         Globals.getInstance().display = new Display(this);
         Globals.getInstance().setupResources();
-
         init();
     }
 
@@ -39,6 +42,8 @@ public class Game extends Pane {
         Globals.getInstance().startGame();
     }
 
+
+
     private void spawnSnake() {
         snake = new Snake(new Vec2d(500, 500));
     }
@@ -48,7 +53,9 @@ public class Game extends Pane {
     }
 
     private void spawnPowerUps(int numberOfPowerUps) {
-        for(int i = 0; i < numberOfPowerUps; ++i) new SimplePowerUp();
+        for(int i = 0; i < numberOfPowerUps; ++i) new Berry();
+        new SpeedBoost();
+        new Heart();
     }
 
     private void setupInputHandling() {
