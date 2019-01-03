@@ -26,14 +26,14 @@ public class Main extends Application {
 
     @Override
     public void stop() throws Exception {
-        System.out.println("Exiting...");
+        System.out.printf("Exiting...%n");
     }
 
     private void spawnRestart(Stage primaryStage) {
         Button btn = new Button("Restart");
         Globals.getInstance().display.addButton(btn);
         btn.setOnAction((event -> {
-            System.out.printf("Restart is clicked%n");
+            Globals.getInstance().stopGame();
             start(primaryStage);
         }));
 
