@@ -68,10 +68,6 @@ public class Snake implements Animatable {
         }
     }
 
-    public boolean isGameOver() {
-        return  (head.isOutOfBounds() || health <= 0);
-    }
-
     private void updateSnakeBodyHistory() {
         GameEntity prev = head;
         for(GameEntity currentPart : body.getList()) {
