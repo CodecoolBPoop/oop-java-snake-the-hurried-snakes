@@ -60,4 +60,8 @@ public class Game extends Pane {
     public Snake getSnake() {
         return snake;
     }
+
+    public GameTimer getGameTimer() {
+        return gameTimer;
+    }
 }

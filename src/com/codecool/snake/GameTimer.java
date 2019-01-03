@@ -33,4 +33,8 @@ public class GameTimer {
         timer.play();
         System.out.println("GameTimer playing.");
     }
+
+    public double getframeTime() {
+        return frameTime;
+    }
 }

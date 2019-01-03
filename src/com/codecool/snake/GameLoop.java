@@ -32,12 +32,18 @@ public class GameLoop {
                 }
             }
             stepNumber++;
-            if (stepNumber % 180 == 0) {
-                new SimpleEnemy();
-            }
+            spawnNewEnemy(3);
             checkCollisions();
         }
         Globals.getInstance().display.frameFinished();
+    }
+
+    private void spawnNewEnemy(int secondsBetweenTwoSpawning) {
+        double stepDuration = Globals.getInstance().game.getGameTimer().getframeTime();
+        if (Math.ceil(stepNumber * stepDuration) % (secondsBetweenTwoSpawning + 1) == 0) {
+            new SimpleEnemy();
+            stepNumber = 0;
+        }
     }
 
     private void checkCollisions() {
