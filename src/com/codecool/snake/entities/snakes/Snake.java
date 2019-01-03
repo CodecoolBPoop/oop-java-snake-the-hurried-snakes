@@ -1,6 +1,7 @@
 package com.codecool.snake.entities.snakes;
 
 import com.codecool.snake.DelayedModificationList;
+import com.codecool.snake.Display;
 import com.codecool.snake.Globals;
 import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
@@ -13,6 +14,7 @@ import javafx.scene.input.KeyCode;
 public class Snake implements Animatable {
     private static float speed = 2;
     private int health = 100;
+    private int snakeLength = 0;
 
     private SnakeHead head;
     private DelayedModificationList<GameEntity> body;
@@ -50,6 +52,7 @@ public class Snake implements Animatable {
         for (int i = 0; i < numParts; i++) {
             SnakeBody newBodyPart = new SnakeBody(position);
             body.add(newBodyPart);
+            snakeLength++;
         }
         Globals.getInstance().display.updateSnakeHeadDrawPosition(head);
     }
@@ -68,6 +71,9 @@ public class Snake implements Animatable {
         if (head.isOutOfBounds() || health <= 0) {
             System.out.printf("Game Over. Health: %s%n", health);
             Globals.getInstance().stopGame();
+            Display display = Globals.getInstance().display;
+            Display.GameOverPopup popup = display.new GameOverPopup();
+            popup.displayGameOver();
         }
     }
 
@@ -84,5 +90,21 @@ public class Snake implements Animatable {
 
         if(result != null) return result;
         return head;
+    }
+
+    public int getSnakeLength() {
+        return snakeLength;
+    }
+
+    public SnakeHead getHead() {
+        return head;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public static float getSpeed() {
+        return speed;
     }
 }

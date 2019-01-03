@@ -7,11 +7,19 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
 
+import java.util.LinkedList;
+import java.util.List;
+
 
 public class GameTimer {
     private static final double DEFAULT_60_FPS = 0.017;
     private double frameTime;
     private Timeline timer = new Timeline();
+    private static List<Timeline> timers = new LinkedList<>();
+
+    public static List<Timeline> getTimers(){
+        return timers;
+    }
 
     GameTimer() {
         this(DEFAULT_60_FPS);
@@ -19,6 +27,7 @@ public class GameTimer {
 
     GameTimer(double frameTime) {
         this.frameTime = frameTime;
+        timers.add(timer);
         System.out.println("GameTimer created with frame time: " + frameTime);
     }
 
@@ -75,6 +84,11 @@ public class GameTimer {
 
     public void stop(){
         System.out.println("GameTimer stopping.");
+        timers.remove(this.timer);
         timer.stop();
+    }
+
+    public double getFrameTime() {
+        return frameTime;
     }
 }
