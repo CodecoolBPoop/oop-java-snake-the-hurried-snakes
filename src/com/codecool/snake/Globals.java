@@ -28,7 +28,6 @@ public class Globals {
 
     public void setupResources() {
         resources = new Resources();
-        resources.addImage("one", new Image("number_one.png"));
         resources.addImage("HealthHeart", new Image("health_heart.png"));
         resources.addImage("SnakeHead", new Image("snake_head.png"));
         resources.addImage("SnakeBody", new Image("snake_body.png"));
