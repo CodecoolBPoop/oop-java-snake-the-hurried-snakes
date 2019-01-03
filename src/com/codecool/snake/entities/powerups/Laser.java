@@ -2,8 +2,10 @@ package com.codecool.snake.entities.powerups;
 
 import com.codecool.snake.Globals;
 import com.codecool.snake.Utils;
+import com.codecool.snake.entities.Animatable;
 import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
+import com.codecool.snake.entities.enemies.Enemy;
 import com.codecool.snake.entities.snakes.SnakeHead;
 
 
@@ -12,7 +14,7 @@ import javafx.geometry.Point2D;
 
 
 
-public class Laser extends GameEntity implements Interactable {
+public class Laser extends GameEntity implements Interactable, Animatable {
     private double headRotation;
     private Point2D heading;
     private int speed;
@@ -25,22 +27,18 @@ public class Laser extends GameEntity implements Interactable {
         setY(position.y);
 
         // Lets give it a heading
-        System.out.printf("The initial heading is %s%n", headRotation);
         setRotate(headRotation - 90);
 
-
-
-
-
-
+        // The laser moves and shoots and kills
+        int speed = 7;
+        heading = Utils.directionToVector(headRotation, speed);
     }
 
     @Override
     public void apply(GameEntity entity) {
         // if some key is presses
-        if(entity instanceof SnakeHead){
+        if(entity instanceof Enemy){
             System.out.println(getMessage());
-            new Berry();
             destroy();
         }
     }
@@ -48,5 +46,14 @@ public class Laser extends GameEntity implements Interactable {
     @Override
     public String getMessage() {
         return "Shoot!";
+    }
+
+    @Override
+    public void step() {
+        if (isOutOfBounds()) {
+            destroy();
+        }
+        setX(getX() + heading.getX());
+        setY(getY() + heading.getY());
     }
 }
