@@ -6,7 +6,6 @@ import com.codecool.snake.entities.GameEntity;
 import com.codecool.snake.entities.Interactable;
 import com.codecool.snake.entities.snakes.SnakeHead;
 
-import java.util.Random;
 
 import com.sun.javafx.geom.Vec2d;
 import javafx.geometry.Point2D;
@@ -18,18 +17,16 @@ public class Laser extends GameEntity implements Interactable {
     private Point2D heading;
     private int speed;
 
-    public Laser(Vec2d position, Point2D heading) {
+    public Laser(Vec2d position, double headRotation) {
         setImage(Globals.getInstance().getImage("Laser"));
-
-        // Lets give it a heading
-        System.out.printf("The initial heading is %s%n", heading);
-        setX(getX() + heading.getX());
-        setY(getY() + heading.getY());
 
         // Laser appears at top of snake
         setX(position.x);
         setY(position.y);
 
+        // Lets give it a heading
+        System.out.printf("The initial heading is %s%n", headRotation);
+        setRotate(headRotation - 90);
 
 
 

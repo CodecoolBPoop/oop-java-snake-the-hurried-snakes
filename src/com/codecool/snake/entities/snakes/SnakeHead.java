@@ -40,7 +40,7 @@ public class SnakeHead extends GameEntity implements Interactable {
         setX(getX() + heading.getX());
         setY(getY() + heading.getY());
         if (turnDirection.equals(SnakeControl.SHOOT)) {
-            new Laser(getPosition(), heading);
+            new Laser(getPosition(), headRotation);
         }
     }
 
