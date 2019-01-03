@@ -2,6 +2,7 @@ package com.codecool.snake;
 
 import com.codecool.snake.resources.Resources;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 // class for holding all static stuff
 public class Globals {
@@ -16,6 +17,8 @@ public class Globals {
     private GameLoop gameLoop;
     private Resources resources;
 
+    public Stage primaryStage;
+    public Main main;
 
     public static Globals getInstance() {
         if(instance == null) instance = new Globals();
@@ -51,5 +54,13 @@ public class Globals {
 
     private Globals() {
         // singleton needs the class to have private constructor
+    }
+
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+    }
+
+    public void setMain(Main main) {
+        this.main = main;
     }
 }

@@ -22,9 +22,12 @@ public class Main extends Application {
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(mainScene);
         primaryStage.show();
+        Globals.getInstance().setPrimaryStage(primaryStage);
 
         game.start();
         spawnRestart(primaryStage);
+
+        Globals.getInstance().setMain(this);
     }
 
     @Override
@@ -42,7 +45,6 @@ public class Main extends Application {
             for (Timeline timer : timers) {
                 timer.stop();
             }
-
             start(primaryStage);
         }));
 

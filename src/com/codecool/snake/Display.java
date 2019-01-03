@@ -1,10 +1,12 @@
 package com.codecool.snake;
 
 import com.codecool.snake.entities.GameEntity;
+
 import java.awt.*;
 import java.util.List;
 
 import com.codecool.snake.entities.snakes.Snake;
+import javafx.animation.Timeline;
 import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 import javafx.scene.*;
@@ -60,7 +62,8 @@ public class Display {
 
     public class GameOverPopup {
 
-        public void displayGameOver(){
+
+        public void displayGameOver() {
 
             Stage popupwindow = new Stage();
 
@@ -75,11 +78,25 @@ public class Display {
             Label scoreLabel = new Label("Your score is: " + score);
             scoreLabel.setFont(Font.font("veranda", FontWeight.BOLD, FontPosture.ITALIC, 22));
 
-            Button button = new Button("Close this pop up window");
-            //button.setOnAction(e -> popupwindow.close());
+            //Button buttonClose = new Button("Close");
+            //buttonClose.setOnAction(e -> popupwindow.close());
+
+            Button buttonNewGame = new Button("Start new game");
+
+
+            buttonNewGame.setOnAction((event -> {
+                Globals.getInstance().stopGame();
+                List<Timeline> timers = GameTimer.getTimers();
+                for (Timeline timer : timers) {
+                    timer.stop();
+                }
+                Globals.getInstance().main.start(Globals.getInstance().primaryStage);
+                popupwindow.close();
+            }));
+
 
             VBox layout = new VBox(20);
-            layout.getChildren().addAll(label1, scoreLabel);
+            layout.getChildren().addAll(label1, scoreLabel, buttonNewGame);
             layout.setAlignment(Pos.CENTER);
 
             Scene scene1 = new Scene(layout, 300, 200);
