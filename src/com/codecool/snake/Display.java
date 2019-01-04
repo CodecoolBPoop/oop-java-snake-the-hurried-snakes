@@ -83,14 +83,13 @@ public class Display {
 
             Button buttonNewGame = new Button("Start new game");
 
+            Main main = Globals.getInstance().main;
+
+            main.stopAllTimers();
 
             buttonNewGame.setOnAction((event -> {
                 Globals.getInstance().stopGame();
-                List<Timeline> timers = GameTimer.getTimers();
-                for (Timeline timer : timers) {
-                    timer.stop();
-                }
-                Globals.getInstance().main.start(Globals.getInstance().primaryStage);
+                main.start(Globals.getInstance().primaryStage);
                 popupwindow.close();
             }));
 

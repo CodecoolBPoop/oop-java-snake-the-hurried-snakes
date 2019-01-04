@@ -40,13 +40,19 @@ public class Main extends Application {
         Globals.getInstance().display.addButton(btn);
         btn.setOnAction((event -> {
             Globals.getInstance().stopGame();
-            List<Timeline> timers = GameTimer.getTimers();
-
-            for (Timeline timer : timers) {
-                timer.stop();
-            }
+            stopAllTimers();
             start(primaryStage);
         }));
 
     }
+
+    public void stopAllTimers() {
+        List<Timeline> timers = GameTimer.getTimers();
+
+        for (Timeline timer : timers) {
+            timer.stop();
+        }
+    }
+
+
 }
