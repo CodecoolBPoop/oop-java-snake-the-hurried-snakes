@@ -34,6 +34,8 @@ public class Globals {
         resources.addImage("HealthHeart", new Image("health_heart.png"));
         resources.addImage("SnakeHead", new Image("snake_head.png"));
         resources.addImage("SnakeBody", new Image("snake_body.png"));
+        resources.addImage("CirclingEnemy", new Image("circling_enemy.png"));
+        resources.addImage("RdmMovingEnemy", new Image("rdmmoving_enemy.png"));
         resources.addImage("SimpleEnemy", new Image("simple_enemy.png"));
         resources.addImage("PowerUpBerry", new Image("powerup_berry.png"));
         resources.addImage("PowerUpBoost", new Image("powerup_speed_boost.png"));

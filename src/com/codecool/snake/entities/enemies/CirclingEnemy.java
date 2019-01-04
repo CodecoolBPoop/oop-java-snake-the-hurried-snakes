@@ -10,6 +10,6 @@ public class CirclingEnemy extends Enemy implements Animatable, Interactable {
 
     public CirclingEnemy() {
         super(20, 2, 2);
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
+        setImage(Globals.getInstance().getImage("CirclingEnemy"));
     }
 }

@@ -11,7 +11,7 @@ public class RandomMovingEnemy extends Enemy implements Animatable, Interactable
 
     public RandomMovingEnemy() {
         super(20, 2, getRandom().nextFloat() * 10 - 5);
-        setImage(Globals.getInstance().getImage("SimpleEnemy"));
+        setImage(Globals.getInstance().getImage("RdmMovingEnemy"));
     }
 
     @Override
