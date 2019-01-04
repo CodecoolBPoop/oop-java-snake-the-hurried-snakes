@@ -34,7 +34,6 @@ public class Laser extends GameEntity implements Interactable, Animatable {
 
     @Override
     public void apply(GameEntity entity) {
-        // if some key is presses
         if(entity instanceof Enemy){
             System.out.println(getMessage());
             destroy();

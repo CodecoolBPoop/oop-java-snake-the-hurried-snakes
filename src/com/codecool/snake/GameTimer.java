@@ -74,7 +74,6 @@ public class GameTimer {
             timer.getKeyFrames().add( powerUpEnder );
             timer.getKeyFrames().add( stopper );
         }
-
     }
 
     public void play() {
