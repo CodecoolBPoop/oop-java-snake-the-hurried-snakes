@@ -2,7 +2,6 @@ package com.codecool.snake;
 
 import com.codecool.snake.entities.powerups.Heart;
 import com.codecool.snake.entities.powerups.SpeedBoost;
-import com.codecool.snake.entities.snakes.Snake;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
@@ -64,7 +63,7 @@ public class GameTimer {
 
             KeyFrame powerUpEnder = new KeyFrame(
                     Duration.seconds(frameTime*300),
-                    ae -> Snake.setSpeed(2));
+                    ae -> Globals.getInstance().game.getSnake().setSpeed(2));
 
             KeyFrame stopper = new KeyFrame(
                     Duration.seconds(frameTime*510),
