@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1800;
+    public static final double WINDOW_HEIGHT = 1000;
 
     public Display display;
     public Game game;
