@@ -7,8 +7,6 @@ import javafx.scene.Node;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import java.util.ConcurrentModificationException;
-
 import static com.codecool.snake.Globals.WINDOW_WIDTH;
 
 public class HealthBar extends GameEntity {
@@ -26,14 +24,10 @@ public class HealthBar extends GameEntity {
     public void writeHealth(int health){
         ObservableList<Node> gameChildren = Globals.getInstance().game.getChildren();
 
-        try {
-            for (Node node : gameChildren) {
-                if (node instanceof Text) {
-                    gameChildren.remove(node);
-                }
+        for (int i = 0; i < gameChildren.size(); i++){
+            if (gameChildren.get(i) instanceof Text) {
+                gameChildren.remove(i);
             }
-        } catch (ConcurrentModificationException e){
-            System.out.println("Writing health to stage...");
         }
 
         String healthString = String.valueOf(health);
