@@ -15,9 +15,7 @@ import javafx.geometry.Point2D;
 
 
 public class Laser extends GameEntity implements Interactable, Animatable {
-    private double headRotation;
     private Point2D heading;
-    private int speed;
 
     public Laser(Vec2d position, double headRotation) {
         setImage(Globals.getInstance().getImage("Laser"));
