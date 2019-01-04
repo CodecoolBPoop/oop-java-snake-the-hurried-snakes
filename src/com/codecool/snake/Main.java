@@ -4,6 +4,7 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 
 import java.util.List;
@@ -21,6 +22,10 @@ public class Main extends Application {
 
         primaryStage.setTitle("Snake Game");
         primaryStage.setScene(mainScene);
+        BackgroundImage backgroundImage = new BackgroundImage(Globals.getInstance().getImage("Background"),
+             BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+
+        game.setBackground(new Background(backgroundImage));
         primaryStage.show();
         Globals.getInstance().setPrimaryStage(primaryStage);
 

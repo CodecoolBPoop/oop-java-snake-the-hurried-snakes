@@ -13,8 +13,8 @@ public class Berry extends GameEntity implements Interactable {
     public Berry() {
         setImage(Globals.getInstance().getImage("PowerUpBerry"));
 
-        setX(rnd.nextDouble() * Globals.WINDOW_WIDTH);
-        setY(rnd.nextDouble() * Globals.WINDOW_HEIGHT);
+        setX(rnd.nextDouble() * (Globals.WINDOW_WIDTH - 50));
+        setY(rnd.nextDouble() * (Globals.WINDOW_HEIGHT - 50));
     }
 
     @Override

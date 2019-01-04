@@ -12,7 +12,7 @@ import javafx.scene.input.KeyCode;
 
 
 public class Snake implements Animatable {
-    private static float speed = 2;
+    private float speed = 2;
     private int health = 100;
     private int snakeLength = 0;
 
@@ -63,7 +63,7 @@ public class Snake implements Animatable {
         System.out.printf("Health: %s%n", health);
     }
 
-    public static void setSpeed(float newSpeed){
+    public void setSpeed(float newSpeed){
         speed = newSpeed;
         System.out.println(speed);
     }
@@ -105,7 +105,7 @@ public class Snake implements Animatable {
         return health;
     }
 
-    public static float getSpeed() {
+    public float getSpeed() {
         return speed;
     }
 }

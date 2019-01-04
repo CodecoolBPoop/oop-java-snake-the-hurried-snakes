@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 public class Globals {
     private static Globals instance = null;
 
-    public static final double WINDOW_WIDTH = 1000;
-    public static final double WINDOW_HEIGHT = 700;
+    public static final double WINDOW_WIDTH = 1800;
+    public static final double WINDOW_HEIGHT = 1000;
 
     public Display display;
     public Game game;
@@ -31,6 +31,7 @@ public class Globals {
 
     public void setupResources() {
         resources = new Resources();
+        resources.addImage("Background", new Image("background.jpg"));
         resources.addImage("HealthHeart", new Image("health_heart.png"));
         resources.addImage("SnakeHead", new Image("snake_head.png"));
         resources.addImage("SnakeBody", new Image("snake_body.png"));
